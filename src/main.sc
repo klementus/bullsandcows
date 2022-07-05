@@ -64,6 +64,36 @@ theme: /
                 $reactions.transition("/Правила/Согласен?");
             } 
             else {
+            #первый элемент
+                if($session.userNumber[0] == $session.botNumber[0]){$session.bulls+=1}
+                else {
+                    for (var i = 0; i<$session.botNumber.length; i++){
+                        if($session.userNumber[0] == $session.botNumber[i]&&i!=0){$session.cows+=1}
+                    }
+                }
+            #второй элемент
+                if($session.userNumber[1] == $session.botNumber[1]){$session.bulls+=1}
+                else {
+                    for (var i = 0; i<$session.botNumber.length; i++){
+                        if($session.userNumber[1] == $session.botNumber[i]&&i!=1){$session.cows+=1}
+                    }
+                }
+            #третий элемент
+                if($session.userNumber[2] == $session.botNumber[2]){$session.bulls+=1}
+                else {
+                    for (var i = 0; i<$session.botNumber.length; i++){
+                        if($session.userNumber[2] == $session.botNumber[i]&&i!=2){$session.cows+=1}
+                    }
+                }
+            #четвертый элемент
+                if($session.userNumber[3] == $session.botNumber[3]){$session.bulls+=1}
+                else {
+                    for (var i = 0; i<$session.botNumber.length; i++){
+                        if($session.userNumber[3] == $session.botNumber[i]&&i!=3){$session.cows+=1}
+                    }
+                }
+                
+                
                 $reactions.answer("Коров: {{$session.cows}}, быков: {{$session.bulls}}");
             }
             
