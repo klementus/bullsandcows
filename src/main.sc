@@ -9,7 +9,7 @@ theme: /
     state: Правила
         q!: $regex</start>
         intent!: /Давай поиграем
-        a: Игра больше-меньше. Загадаю число от 0 до 100, ты будешь отгадывать. Начнём?
+        a: Игра быки и коровы. Я загадаю четырехзначное число, ты будешь отгадывать. Если угадаешь цифру и место, то это бык. Если только цифру, но не на своем месте, то это корова. Начнём?
         go!: /Правила/Согласен?
 
         state: Согласен?
@@ -44,6 +44,7 @@ theme: /
             # сохраняем введенное пользователем число
             var num = $parseTree._Number;
             var str = String(num);
+            var tempArray = $session.botNumber;
             $session.cows = 0;
             $session.bulls = 0;
             $session.userNumber = [];
@@ -64,34 +65,19 @@ theme: /
                 $reactions.transition("/Правила/Согласен?");
             } 
             else {
-            #первый элемент
-                if($session.userNumber[0] == $session.botNumber[0]){$session.bulls+=1}
-                else {
-                    for (var i = 0; i<$session.botNumber.length; i++){
-                        if($session.userNumber[0] == $session.botNumber[i]&&i!=0){$session.cows+=1}
+            #проверка на быков
+                for (var i = 0; i<$session.userNumber.length; i++){
+                    if($session.userNumber[i] == tempArray[i]){
+                    $session.bulls+=1;
+                    tempArray[i]="x";
                     }
                 }
-            #второй элемент
-                if($session.userNumber[1] == $session.botNumber[1]){$session.bulls+=1}
-                else {
-                    for (var i = 0; i<$session.botNumber.length; i++){
-                        if($session.userNumber[1] == $session.botNumber[i]&&i!=1){$session.cows+=1}
-                    }
-                }
-            #третий элемент
-                if($session.userNumber[2] == $session.botNumber[2]){$session.bulls+=1}
-                else {
-                    for (var i = 0; i<$session.botNumber.length; i++){
-                        if($session.userNumber[2] == $session.botNumber[i]&&i!=2){$session.cows+=1}
-                    }
-                }
-            #четвертый элемент
-                if($session.userNumber[3] == $session.botNumber[3]){$session.bulls+=1}
-                else {
-                    for (var i = 0; i<$session.botNumber.length; i++){
-                        if($session.userNumber[3] == $session.botNumber[i]&&i!=3){$session.cows+=1}
-                    }
-                }
+            
+            
+                
+                
+                
+            
                 
                 
                 $reactions.answer("Коров: {{$session.cows}}, быков: {{$session.bulls}}");
