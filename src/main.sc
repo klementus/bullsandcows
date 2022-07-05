@@ -73,11 +73,10 @@ theme: /
                         }
                     }
                 }
-                if(sameNumberFlag = true){
+                if(sameNumberFlag == true){
                     $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами");
                 }
                 else {
-            
             #проверка на полное совпадение
                     if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
                         $reactions.answer("Ты выиграл! Хочешь еще раз?");
@@ -99,24 +98,11 @@ theme: /
                                 }
                             }
                         }
-                
-            
-            #TEMP
-            $reactions.answer("$session.botNumber {{$session.botNumber}}");
-            $reactions.answer("$session.userNumber {{$session.userNumber}}");
-            $session.tempArray = tempArray;
-            $reactions.answer("$session.tempArray {{$session.tempArray}}");
-            #TEMP
-            
-            
-                
-                
             $reactions.answer("Коров: {{$session.cows}}, быков: {{$session.bulls}}");
                     }
                 }
             }
             
-
 
     state: NoMatch || noContext = true
         event!: noMatch
