@@ -27,12 +27,12 @@ theme: /
         script:
             $session.array = [];
         
-            for (i = 0; i < 4; i++) {
-            $session.randomNumber = $jsapi.random(8) + 1;
+            for (var i = 0; i < 4; i++) {
+            $session.randomNumber = $jsapi.random(9) + 1;
             $session.array.push($session.randomNumber);
             }
             
-            $session.number = array;
+            $session.number = $session.array;
             
             #$session.number = $jsapi.random(100) + 1;
             $reactions.answer("Загадано {{$session.number}}");
@@ -43,6 +43,15 @@ theme: /
         script:
             # сохраняем введенное пользователем число
             var num = $parseTree._Number;
+            
+            #$session.arr = $session.arr.map(num);
+            
+            
+            
+            $reactions.answer("Вы ввели {{$session.arr}}");
+            
+            
+            
 
             # проверяем угадал ли пользователь загаданное число и выводим соответствующую реакцию
             if (num == $session.number) {
