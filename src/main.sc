@@ -25,11 +25,14 @@ theme: /
     state: Игра
         # сгенерируем случайное число и перейдем в стейт /Проверка
         script:
-            $session.number = [];
+            array = [];
+        
             for (i = 0; i < 4; i++) {
-            $session.number.push($jsapi.random(8) + 1);
+            randomNumber = $jsapi.random(8) + 1;
+            array.push(randomNumber);
             }
             
+            $session.number = array;
             
             #$session.number = $jsapi.random(100) + 1;
             $reactions.answer("Загадано {{$session.number}}");
