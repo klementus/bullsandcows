@@ -99,8 +99,8 @@ theme: /
                             }
                         }
             $reactions.answer("Результат: {{$session.cowsArray.length}} «коров(ы)» ({{$session.cowsArray.length}} цифр(ы): ' {{$session.cowsArray}} ' — угаданы на неверных позициях) и {{$session.bullsArray.length}} «бык(и)» ({{$session.bullsArray.length}} цифр(ы): ' {{$session.bullsArray}} ' угаданы вплоть до позиции).");
-            var $session.firstBlock = "";
-            var $session.secondBlock = "";
+            $session.firstBlock = "";
+            $session.secondBlock = "";
             switch ($session.cowsArray.length) {
                 case '0': $session.firstBlock = "ноль «коров» (ноль цифр"; break;
                 case '1': $session.firstBlock = "одна «корова» (одна цифра: "; break;
