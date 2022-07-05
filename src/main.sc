@@ -28,14 +28,14 @@ theme: /
             $session.array = [];
         
             for (var i = 0; i < 4; i++) {
-            $session.randomNumber = $jsapi.random(9) + 1;
-            $session.array.push($session.randomNumber);
+                $session.randomNumber = $jsapi.random(9) + 1;
+                $session.array.push($session.randomNumber);
             }
             
             $session.number = $session.array;
-            
-            #$session.number = $jsapi.random(100) + 1;
+            #TEMP
             $reactions.answer("Загадано {{$session.number}}");
+            #TEMP
             $reactions.transition("/Проверка");
 
     state: Проверка
@@ -43,15 +43,16 @@ theme: /
         script:
             # сохраняем введенное пользователем число
             var num = $parseTree._Number;
-            
             var str = String(num);
+            $session.arr = [];
             
-            $session.arr = str.split();
+            for (var i = 0; i<str.length; i++){
+                $session.arr.push(str[i])
+            }
             
-            
-            
+            #TEMP
             $reactions.answer("Вы ввели {{$session.arr}}");
-            
+            #TEMP
             
             
 
