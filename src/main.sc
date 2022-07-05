@@ -32,9 +32,9 @@ theme: /
                 $session.array.push($session.randomNumber);
             }
             
-            $session.number = $session.array;
+            $session.botNumber = $session.array;
             #TEMP
-            $reactions.answer("Загадано {{$session.number}}");
+            $reactions.answer("Загадано {{$session.botNumber}}");
             #TEMP
             $reactions.transition("/Проверка");
 
@@ -44,27 +44,42 @@ theme: /
             # сохраняем введенное пользователем число
             var num = $parseTree._Number;
             var str = String(num);
-            $session.arr = [];
+            $session.cows = 0;
+            $session.bulls = 0;
+            $session.userNumber = [];
             
             for (var i = 0; i<str.length; i++){
-                $session.arr.push(str[i])
+                $session.userNumber.push(str[i])
             }
             
             #TEMP
-            $reactions.answer("Вы ввели {{$session.arr}}");
+            $reactions.answer("Вы ввели {{$session.userNumber}}");
             #TEMP
             
             
 
             # проверяем угадал ли пользователь загаданное число и выводим соответствующую реакцию
-            if ($session.arr[0] == $session.number[0]&&$session.arr[1] == $session.number[1]&&$session.arr[2] == $session.number[2]&&$session.arr[3] == $session.number[3]) {
+            if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
                 $reactions.answer("Ты выиграл! Хочешь еще раз?");
                 $reactions.transition("/Правила/Согласен?");
+            } 
+            else {
+                $reactions.answer("Коров: {{$session.cows}}, быков: {{$session.bulls}}");
             }
-            else
-                if ($session.arr < $session.number)
-                    $reactions.answer(selectRandomArg(["Мое число больше!", "Бери выше", "Попробуй число больше"]));
-                else $reactions.answer(selectRandomArg(["Мое число меньше!", "Подсказка: число меньше", "Дам тебе еще одну попытку! Мое число меньше."]));
+            
+            
+            
+            # else {
+            #     if ($session.userNumber[0] == $session.botNumber[0]){bulls+=1}else{
+            #         for (var i = 0; i<$session.botNumber.length; i++){
+            #         if($session.userNumber[0] == $session.botNumber[i]){bulls+=1};break)
+            #         }
+            #     }
+            # }
+            
+            #if ($session.arr < $session.number)
+            #$reactions.answer(selectRandomArg(["Мое число больше!", "Бери выше", "Попробуй число больше"]));
+            #else $reactions.answer(selectRandomArg(["Мое число меньше!", "Подсказка: число меньше", "Дам тебе еще одну попытку! Мое число меньше."]));
 
     state: NoMatch || noContext = true
         event!: noMatch
