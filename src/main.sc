@@ -99,7 +99,7 @@ theme: /
                             }
                         }
             $reactions.answer(
-                "Результат: {{$session.cowsArray.length}} «коровы» ({{$session.cowsArray.length}} цифры: {{$session.cowsArray}} — угаданы на неверных позициях) и {{$session.bullsArray.length}} «быки» ({{$session.bullsArray.length}} цифры {{$session.bullsArray}} угаданы вплоть до позиции).");
+                "Результат: {{$session.cowsArray.length}} «коров(ы)» ({{$session.cowsArray.length}} цифр(ы): '{{$session.cowsArray}}' — угаданы на неверных позициях) и {{$session.bullsArray.length}} «бык(и)» ({{$session.bullsArray.length}} цифр(ы): '{{$session.bullsArray}}' угаданы вплоть до позиции).");
                     }
                 }
             }
