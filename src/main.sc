@@ -44,7 +44,9 @@ theme: /
             # сохраняем введенное пользователем число
             var num = $parseTree._Number;
             
-            #$session.arr = $session.arr.map(num);
+            var str = String(num);
+            
+            $session.arr = str.split();
             
             
             
