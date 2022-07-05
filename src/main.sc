@@ -49,9 +49,9 @@ theme: /
             var num = $parseTree._Number;
             #инициализация переменных
             var tempArray = $session.botNumber.slice();
-            $session.cows = 0;
-            $session.bulls = 0;
             $session.userNumber = [];
+            $session.cowsArray = [];
+            $session.bullsArray = [];
             
             #конвертация числа пользователя в массив
             var str = String(num);
@@ -86,7 +86,7 @@ theme: /
             #проверка на быков
                         for (var i = 0; i<$session.userNumber.length; i++){
                             if($session.userNumber[i] == tempArray[i]){
-                            $session.bulls+=1;
+                            $session.bullsArray.push($session.userNumber[i])
                             tempArray[i]="x";
                             }
                         }
@@ -94,11 +94,12 @@ theme: /
                         for (var i = 0; i<$session.userNumber.length; i++){
                             for (var y = 0; y<$session.userNumber.length; y++){
                                 if($session.userNumber[i] == tempArray[y]){
-                                    $session.cows+=1;
+                                    $session.cowsArray.push($session.userNumber[i])
                                 }
                             }
                         }
-            $reactions.answer("Коров: {{$session.cows}}, быков: {{$session.bulls}}");
+            $reactions.answer(
+                "Результат: {{$session.cowsArray.length}} «коровы» ({{$session.cowsArray.length}} цифры: {{$session.cowsArray}} — угаданы на неверных позициях) и {{$session.bullsArray.length}} «быки» ({{$session.bullsArray.length}} цифры {{$session.bullsArray}} угаданы вплоть до позиции).");
                     }
                 }
             }
@@ -110,3 +111,7 @@ theme: /
             a: Я не понял. Пожалуйста введите 4-значное число с неповторяющимися цифрами
             a: Что вы имеете в виду? Пожалуйста введите 4-значное число с неповторяющимися цифрами
             a: Ничего не пойму. Пожалуйста введите 4-значное число с неповторяющимися цифрами
+
+
+
+
