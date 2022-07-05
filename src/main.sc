@@ -41,7 +41,7 @@ theme: /
             # сохраняем введенное пользователем число
             var num = $parseTree._Number;
             var str = String(num);
-            var tempArray = $session.botNumber;
+            var tempArray = $session.botNumber.slice();
             $session.cows = 0;
             $session.bulls = 0;
             $session.userNumber = [];
@@ -50,7 +50,7 @@ theme: /
                 $session.userNumber.push(str[i])
             }
             
-
+            
             # проверяем угадал ли пользователь загаданное число и выводим соответствующую реакцию
             if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
                 $reactions.answer("Ты выиграл! Хочешь еще раз?");
@@ -65,12 +65,15 @@ theme: /
                     }
                 }
             
+            #проверка на коров
+                for (var i = 0; i<$session.userNumber.length; i++){
+                    
+                }
+                
             
-                
-                
             #TEMP
-            $reactions.answer("Загадано {{$session.botNumber}}");
-            $reactions.answer("Вы ввели {{$session.userNumber}}");
+            $reactions.answer("$session.botNumber {{$session.botNumber}}");
+            $reactions.answer("$session.userNumber {{$session.userNumber}}");
             $session.tempArray = tempArray;
             $reactions.answer("$session.tempArray {{$session.tempArray}}");
             #TEMP
