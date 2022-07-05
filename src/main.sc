@@ -57,12 +57,12 @@ theme: /
             
 
             # проверяем угадал ли пользователь загаданное число и выводим соответствующую реакцию
-            if (num == $session.number) {
+            if ($session.arr[0] == $session.number[0]&&$session.arr[1] == $session.number[1]&&$session.arr[2] == $session.number[2]&&$session.arr[3] == $session.number[3]) {
                 $reactions.answer("Ты выиграл! Хочешь еще раз?");
                 $reactions.transition("/Правила/Согласен?");
             }
             else
-                if (num < $session.number)
+                if ($session.arr < $session.number)
                     $reactions.answer(selectRandomArg(["Мое число больше!", "Бери выше", "Попробуй число больше"]));
                 else $reactions.answer(selectRandomArg(["Мое число меньше!", "Подсказка: число меньше", "Дам тебе еще одну попытку! Мое число меньше."]));
 
