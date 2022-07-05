@@ -25,7 +25,7 @@ theme: /
     state: Игра
         # сгенерируем случайное число и перейдем в стейт /Проверка
         script:
-            array = [];
+            let array = [];
         
             for (i = 0; i < 4; i++) {
             randomNumber = $jsapi.random(8) + 1;
