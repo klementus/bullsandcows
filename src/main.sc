@@ -27,7 +27,7 @@ theme: /
         script:
             $session.number = [];
             for (i = 0; i < 4; i++) {
-            $session.number += $jsapi.random(8) + 1;
+            $session.number.push($jsapi.random(8) + 1);
             }
             
             
