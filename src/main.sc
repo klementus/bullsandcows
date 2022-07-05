@@ -23,35 +23,36 @@ theme: /
                 a: Ну и ладно! Если передумаешь - скажи "давай поиграем"
 
     state: Игра
-        # сгенерируем случайное число и перейдем в стейт /Проверка
         script:
+            # генерация случайного массива из 4 чисел (загаданное число)
             $session.array = [];
-        
             for (var i = 0; i < 4; i++) {
                 $session.randomNumber = $jsapi.random(9) + 1;
                 $session.array.push($session.randomNumber);
             }
-            
             $session.botNumber = $session.array;
+            
+            #переход в стейт /Проверка
             $reactions.transition("/Проверка");
 
     state: Проверка
         intent: /Число
         script:
-            # сохраняем введенное пользователем число
+            #парсинг ввода пользователя
             var num = $parseTree._Number;
-            var str = String(num);
+            #инициализация переменных
             var tempArray = $session.botNumber.slice();
             $session.cows = 0;
             $session.bulls = 0;
             $session.userNumber = [];
             
+            #конвертация числа пользователя в массив
+            var str = String(num);
             for (var i = 0; i<str.length; i++){
                 $session.userNumber.push(str[i])
             }
             
-            
-            # проверяем угадал ли пользователь загаданное число и выводим соответствующую реакцию
+            # проверка числа пользователя
             if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
                 $reactions.answer("Ты выиграл! Хочешь еще раз?");
                 $reactions.transition("/Правила/Согласен?");
@@ -64,10 +65,13 @@ theme: /
                     tempArray[i]="x";
                     }
                 }
-            
             #проверка на коров
                 for (var i = 0; i<$session.userNumber.length; i++){
-                    
+                    for (var y = 0; y<$session.userNumber.length; y++){
+                        if($session.userNumber[i] == tempArray[y]){
+                            $session.cows+=1;
+                        }
+                    }
                 }
                 
             
