@@ -24,11 +24,18 @@ theme: /
 
     state: Игра
         script:
-            # генерация случайного массива из 4 чисел (загаданное число)
+            #генерация случайного массива из 4 разных цифр (загаданное число)
             $session.array = [];
-            for (var i = 0; i < 4; i++) {
+            var sameNumberFlag = false;
+            for (var i = 0; $session.array.length < 4; i++) {
                 $session.randomNumber = $jsapi.random(9) + 1;
-                $session.array.push($session.randomNumber);
+                for(var y = 0; y<$session.array.length; y++){
+                    if($session.array[y]==$session.randomNumber){
+                        sameNumberFlag = true;    
+                    } 
+                }
+                if(sameNumberFlag==false){$session.array.push($session.randomNumber);}
+                sameNumberFlag = false;
             }
             $session.botNumber = $session.array;
             
@@ -52,27 +59,46 @@ theme: /
                 $session.userNumber.push(str[i])
             }
             
-            # проверка числа пользователя
-            if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
-                $reactions.answer("Ты выиграл! Хочешь еще раз?");
-                $reactions.transition("/Правила/Согласен?");
+            #проверка числа пользователя на размер
+            if($session.userNumber.length!=4){
+                $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами");
             } 
             else {
-            #проверка на быков
-                for (var i = 0; i<$session.userNumber.length; i++){
-                    if($session.userNumber[i] == tempArray[i]){
-                    $session.bulls+=1;
-                    tempArray[i]="x";
-                    }
-                }
-            #проверка на коров
+            #проверка числа пользователя на повторения
+                var sameNumberFlag = false;
                 for (var i = 0; i<$session.userNumber.length; i++){
                     for (var y = 0; y<$session.userNumber.length; y++){
-                        if($session.userNumber[i] == tempArray[y]){
-                            $session.cows+=1;
+                        if($session.userNumber[i]==$session.userNumber[y]&&i!=y){
+                            sameNumberFlag = true;
                         }
                     }
                 }
+                if(sameNumberFlag = true){
+                    $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами");
+                }
+                else {
+            
+            #проверка на полное совпадение
+                    if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
+                        $reactions.answer("Ты выиграл! Хочешь еще раз?");
+                        $reactions.transition("/Правила/Согласен?");
+                    } 
+                    else {
+            #проверка на быков
+                        for (var i = 0; i<$session.userNumber.length; i++){
+                            if($session.userNumber[i] == tempArray[i]){
+                            $session.bulls+=1;
+                            tempArray[i]="x";
+                            }
+                        }
+            #проверка на коров
+                        for (var i = 0; i<$session.userNumber.length; i++){
+                            for (var y = 0; y<$session.userNumber.length; y++){
+                                if($session.userNumber[i] == tempArray[y]){
+                                    $session.cows+=1;
+                                }
+                            }
+                        }
                 
             
             #TEMP
@@ -86,25 +112,15 @@ theme: /
                 
                 
             $reactions.answer("Коров: {{$session.cows}}, быков: {{$session.bulls}}");
+                    }
+                }
             }
             
-            
-            
-            # else {
-            #     if ($session.userNumber[0] == $session.botNumber[0]){bulls+=1}else{
-            #         for (var i = 0; i<$session.botNumber.length; i++){
-            #         if($session.userNumber[0] == $session.botNumber[i]){bulls+=1};break)
-            #         }
-            #     }
-            # }
-            
-            #if ($session.arr < $session.number)
-            #$reactions.answer(selectRandomArg(["Мое число больше!", "Бери выше", "Попробуй число больше"]));
-            #else $reactions.answer(selectRandomArg(["Мое число меньше!", "Подсказка: число меньше", "Дам тебе еще одну попытку! Мое число меньше."]));
+
 
     state: NoMatch || noContext = true
         event!: noMatch
         random:
-            a: Я не понял
-            a: Что вы имеете в виду?
-            a: Ничего не пойму
+            a: Я не понял. Пожалуйста введите 4-значное число с неповторяющимися цифрами
+            a: Что вы имеете в виду? Пожалуйста введите 4-значное число с неповторяющимися цифрами
+            a: Ничего не пойму. Пожалуйста введите 4-значное число с неповторяющимися цифрами
