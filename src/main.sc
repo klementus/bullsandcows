@@ -61,7 +61,7 @@ theme: /
             
             #проверка числа пользователя на размер
             if($session.userNumber.length!=4){
-                $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами");
+                $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами. Количество цифр не совпадает");
             } 
             else {
             #проверка числа пользователя на повторения
@@ -74,7 +74,7 @@ theme: /
                     }
                 }
                 if(sameNumberFlag == true){
-                    $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами");
+                    $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами. Найдены повторяющиеся цифры");
                 }
                 else {
             #проверка на полное совпадение
@@ -98,23 +98,27 @@ theme: /
                                 }
                             }
                         }
-            $reactions.answer("Результат: {{$session.cowsArray.length}} «коров(ы)» ({{$session.cowsArray.length}} цифр(ы): ' {{$session.cowsArray}} ' — угаданы на неверных позициях) и {{$session.bullsArray.length}} «бык(и)» ({{$session.bullsArray.length}} цифр(ы): ' {{$session.bullsArray}} ' угаданы вплоть до позиции).");
+                        
+            #капелька лингвистики
             $session.firstBlock = "";
             $session.secondBlock = "";
-            switch ($session.cowsArray.length) {
+            var strSessionCowsArrayLength = String($session.cowsArray.length);
+            var strSessionBullsArrayLength = String($session.bullsArray.length);
+            switch (strSessionCowsArrayLength) {
                 case '0': $session.firstBlock = "ноль «коров» (ноль цифр"; break;
-                case '1': $session.firstBlock = "одна «корова» (одна цифра: "; break;
+                case '1': $session.firstBlock = "одна «корова» (одна цифра:"; break;
                 case '2': $session.firstBlock = "две «коровы» (две цифры:"; break;
                 case '3': $session.firstBlock = "три «коровы» (три цифры:"; break;
                 case '4': $session.firstBlock = "четыре «коровы» (четыре цифры:"; break;
             }
-            switch ($session.bullsArray.length) {
+            switch (strSessionBullsArrayLength) {
                 case '0': $session.secondBlock = "ноль «быков» (ноль цифр:"; break;
                 case '1': $session.secondBlock = "один «бык» (одна цифра:"; break;
                 case '2': $session.secondBlock = "два «быка» (две цифры:"; break;
                 case '3': $session.secondBlock = "три «быка» (три цифры:"; break;
                 case '4': $session.secondBlock = "четыре «быка» (четыре цифры:"; break;
             }
+            
             $reactions.answer("Результат: {{$session.firstBlock}} «{{$session.cowsArray}}» — угаданы на неверных позициях) и {{$session.secondBlock}} «{{$session.bullsArray}}» угаданы вплоть до позиции).");
             
                     }
