@@ -1,16 +1,23 @@
+# название проекта
 name: zb-cailapub
+# точка входа
+entryPoint:
+  - main.sc
 
-entryPoint: main.sc
-
-botEngine: v2
-language: ru
-
-tests:
-  include:
-    - test.xml
+# параметры NLU-сервиса CAILA:
+botEngine: v2   #тип классификатора
+language: ru    # язык бота по умолчанию
 
 sts:
     noMatchThreshold: 0.2
 
 caila:
     noMatchThreshold: 0.2
+
+# настройка прерывания слот-филлинга
+injector:
+    slotfilling:
+        maxSlotRetries: 2
+        stopOnAnyIntent: false
+        stopOnAnyIntentThreshold: 0.2
+
