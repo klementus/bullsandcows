@@ -26,7 +26,7 @@ theme: /
         # сгенерируем случайное число и перейдем в стейт /Проверка
         script:
             $session.number = [];
-            for (let i = 0; i < 4; i++) {
+            for (i = 0; i < 4; i++) {
             $session.number += $jsapi.random(8) + 1;
             }
             
