@@ -16,56 +16,95 @@
     "shared" : false
   },
   "intents" : [ {
-    "id" : 11029447,
-    "path" : "/привет",
+    "id" : 11037771,
+    "path" : "/Давай поиграем",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "привет"
+      "text" : "хочу играть"
     }, {
-      "text" : "здаров"
+      "text" : "давай поиграем"
     }, {
-      "text" : "ку"
+      "text" : "играть"
     }, {
-      "text" : "прив"
+      "text" : "игра"
     }, {
-      "text" : "здарова"
+      "text" : "game"
     }, {
-      "text" : "здорово"
+      "text" : "старт"
+    } ],
+    "patterns" : [ ],
+    "slots" : [ ],
+    "priority" : 0
+  }, {
+    "id" : 11038085,
+    "path" : "/Несогласие",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "нет"
     }, {
-      "text" : "здравствуй"
+      "text" : "не"
     }, {
-      "text" : "здравствуйте"
+      "text" : "не буду"
     }, {
-      "text" : "добрый день"
+      "text" : "не хочу"
     }, {
-      "text" : "добрый вечер"
+      "text" : "отстань"
     }, {
-      "text" : "доброе утро"
+      "text" : "отвали"
+    }, {
+      "text" : "Нет"
     } ],
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 11029446,
-    "path" : "/пока",
+    "id" : 11038098,
+    "path" : "/Согласие",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "пока"
+      "text" : "Да"
     }, {
-      "text" : "досвидания"
+      "text" : "да"
     }, {
-      "text" : "до свидания"
+      "text" : "Давай"
     }, {
-      "text" : "прощай"
+      "text" : "давай"
     }, {
-      "text" : "прощайте"
+      "text" : "согласен"
     }, {
-      "text" : "гуд бай"
+      "text" : "начнем"
     }, {
-      "text" : "пока пока"
+      "text" : "хочу"
+    }, {
+      "text" : "буду"
     } ],
     "patterns" : [ ],
+    "slots" : [ {
+      "name" : "Number",
+      "entity" : "duckling.number",
+      "required" : true,
+      "prompts" : [ "Я загадал число. Твоя догадка? ", "Предположи число" ],
+      "array" : true
+    } ],
+    "priority" : 0
+  }, {
+    "id" : 11038762,
+    "path" : "/Число",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "@duckling.number"
+    } ],
+    "patterns" : [ ],
+    "slots" : [ {
+      "name" : "Number",
+      "entity" : "duckling.number",
+      "required" : true,
+      "prompts" : [ ],
+      "array" : true
+    } ],
     "priority" : 0
   } ],
   "entities" : [ ],
