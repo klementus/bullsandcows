@@ -1,3 +1,4 @@
+//генерация случайного массива из 4 разных цифр (загаданное число)
 function botThinkNumber(){
     var botNumber = []
     var sameNumberFlag = false;
@@ -14,11 +15,33 @@ function botThinkNumber(){
     return botNumber
 }
 
+//парсинг ввода пользователя
+function userInput(parseTree){
+    var num = parseTree._Number;
+    num = intToArray(num);
+    
+    return num
+}
 
+//конвертация int в массив
+function intToArray(number){
+    var str = String(number);
+    var arrayNumber = [];
+    for (var i = 0; i<str.length; i++){
+        arrayNumber.push(str[i])
+    }
+    return arrayNumber
+}
 
-
-
-
+//проверка числа пользователя на размер
+function checkSize(number){
+    if(number.length==4){
+        return true
+    } 
+    else{ 
+        return false 
+    }
+}
 
 
 

@@ -36,19 +36,20 @@ theme: /
     state: Проверка
         intent: /Число
         script:
-            #парсинг ввода пользователя
-            var num = $parseTree._Number;
-            #инициализация переменных
+            #инициализация переменных TEMP
             var tempArray = $session.botNumber.slice();
-            $session.userNumber = [];
+            
             $session.cowsArray = [];
             $session.bullsArray = [];
             
-            #конвертация числа пользователя в массив
-            var str = String(num);
-            for (var i = 0; i<str.length; i++){
-                $session.userNumber.push(str[i])
+            #инициализация ввода пользователя
+            $session.userNumber = userInput($parseTree);
+            
+            #проверка числа пользователя на размер
+            if(!checkSize($session.userNumber)){
+                $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами. Количество цифр не совпадает");    
             }
+            
             
             #проверка числа пользователя на размер
             if($session.userNumber.length!=4){
@@ -89,7 +90,7 @@ theme: /
                                 }
                             }
                         }
-                        
+        
             #капелька лингвистики
             $session.firstBlock = "";
             $session.secondBlock = "";
