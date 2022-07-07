@@ -35,7 +35,9 @@ function intToArray(number){
 
 //проверка числа пользователя на корректность
 function isCorrect(number){
-    if(checkSize(number)&&checkRepeat(number)){return true} else {return false}
+    if(!checkSize(number)){return "size"}
+    if(!checkRepeat(number)){return "repeat"}
+    if(checkSize&&checkRepeat){return "correct"}
 }
 
 //проверка числа пользователя на размер

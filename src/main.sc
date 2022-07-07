@@ -36,20 +36,24 @@ theme: /
     state: Проверка
         intent: /Число
         script:
-            #инициализация переменных TEMP
+            #TEMP
+            
             var tempArray = $session.botNumber.slice();
             
             $session.cowsArray = [];
             $session.bullsArray = [];
             
+            #TEMP
+            
             #инициализация ввода пользователя
             $session.userNumber = userInput($parseTree);
             
             #проверка числа пользователя на корректность
-            if(!isCorrect($session.userNumber)){
-                $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами");    
-            } 
-            
+            switch (isCorrect($session.userNumber)) {
+                case 'size': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр"); break;
+                case 'repeat': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Повторяющиеся цифры"); break;
+                case 'correct': $reactions.answer("ОК"); break;
+            }
             
             
             #проверка на полное совпадение
