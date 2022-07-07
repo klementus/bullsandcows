@@ -46,8 +46,15 @@ theme: /
                 case 'correct': $session.result = checkNumber($session.userNumber, $session.botNumber); break;
             }
             
+            #
+            if($session.result=="win"){
+                $reactions.answer("Ты выиграл! Хочешь еще раз?");
+                $reactions.transition("/Правила/Согласен?");
+            } 
+            else {
+                
             
-            
+            }
             
             
             

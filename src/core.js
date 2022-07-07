@@ -74,25 +74,23 @@ function checkNumber(userNumber, botNumber){
 }
 
 //проверка на полное совпадение
-function checkFull(number){
-    
+function checkFull(userNumber, botNumber){
+    if(userNumber[0] == botNumber[0]&&userNumber[1] == botNumber[1]&&userNumber[2] == botNumber[2]&&userNumber[3] == botNumber[3]){
+        return true
+    } else return false
 }
 
 //проверка на быков
-function checkBulls(number){
-    
+function checkBulls(userNumber, botNumber){
+    return
 }
 
 //проверка на коров
-function checkCows(number){
-    
+function checkCows(userNumber, botNumber){
+    return
 }
 
-#проверка на полное совпадение
-                    if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
-                        $reactions.answer("Ты выиграл! Хочешь еще раз?");
-                        $reactions.transition("/Правила/Согласен?");
-                    } 
+
 
 
 
