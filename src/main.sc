@@ -55,20 +55,6 @@ theme: /
             }
             
             
-            
-            #проверка числа пользователя на повторения
-                var sameNumberFlag = false;
-                for (var i = 0; i<$session.userNumber.length; i++){
-                    for (var y = 0; y<$session.userNumber.length; y++){
-                        if($session.userNumber[i]==$session.userNumber[y]&&i!=y){
-                            sameNumberFlag = true;
-                        }
-                    }
-                }
-                if(sameNumberFlag == true){
-                    $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами. Найдены повторяющиеся цифры");
-                }
-                else {
             #проверка на полное совпадение
                     if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
                         $reactions.answer("Ты выиграл! Хочешь еще раз?");
@@ -121,7 +107,7 @@ theme: /
             $reactions.answer("Результат: {{$session.firstBlock}} «{{$session.cowsArray}}» — угаданы на неверных позициях) и {{$session.secondBlock}} «{{$session.bullsArray}}» угаданы вплоть до позиции).");
             
                     }
-                }
+                
             
             
 
