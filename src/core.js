@@ -63,14 +63,36 @@ function checkRepeat(number){
     if(unique == true){return true} else {return false}
 }
 
+//основная проверка числа пользователя
+function checkNumber(userNumber, botNumber){
+    if(checkFull(userNumber, botNumber)){return "win"} 
+    else {
+    var bulls = checkBulls(userNumber, botNumber)
+    var cows = checkCows(userNumber, botNumber)
+    var result = [cows, bulls]
+    }
+}
 
+//проверка на полное совпадение
+function checkFull(number){
+    
+}
 
+//проверка на быков
+function checkBulls(number){
+    
+}
 
+//проверка на коров
+function checkCows(number){
+    
+}
 
-
-
-
-
+#проверка на полное совпадение
+                    if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
+                        $reactions.answer("Ты выиграл! Хочешь еще раз?");
+                        $reactions.transition("/Правила/Согласен?");
+                    } 
 
 
 
