@@ -43,49 +43,23 @@ theme: /
             switch (isCorrect($session.userNumber)) {
                 case 'size': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр"); break;
                 case 'repeat': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Повторяющиеся цифры"); break;
-                case 'correct': $session.result = checkNumber($session.userNumber, $session.botNumber); break;
+                case 'correct': 
+                    $session.bullsArray = checkBulls($session.userNumber, $session.botNumber);
+                    $session.cowsArray = checkCows($session.userNumber, $session.botNumber);
+                    break;
             }
             
-            #
-            if($session.result=="win"){
-                $reactions.answer("Ты выиграл! Хочешь еще раз?");
-                $reactions.transition("/Правила/Согласен?");
-            } 
-            else {
-                
-            
+            if(isCorrect($session.userNumber)=="correct"){
+                if($session.bullsArray.length==3){
+                    $reactions.answer("Ты выиграл! Хочешь еще раз?");
+                    $reactions.transition("/Правила/Согласен?");
+                } 
+                else {
+                    $session.result = formTheAnswer($session.bullsArray, $session.cowsArray)
+                    $reactions.answer("Результат: {{$session.result}}");
+                }
             }
             
-            
-            
-            
-            
-            #TEMP
-            var tempArray = $session.botNumber.slice();
-            $session.cowsArray = [];
-            $session.bullsArray = [];
-            #TEMP
-            #проверка на полное совпадение
-                    if ($session.userNumber[0] == $session.botNumber[0]&&$session.userNumber[1] == $session.botNumber[1]&&$session.userNumber[2] == $session.botNumber[2]&&$session.userNumber[3] == $session.botNumber[3]) {
-                        $reactions.answer("Ты выиграл! Хочешь еще раз?");
-                        $reactions.transition("/Правила/Согласен?");
-                    } 
-                    else {
-            #проверка на быков
-                        for (var i = 0; i<$session.userNumber.length; i++){
-                            if($session.userNumber[i] == tempArray[i]){
-                            $session.bullsArray.push($session.userNumber[i])
-                            tempArray[i]="x";
-                            }
-                        }
-            #проверка на коров
-                        for (var i = 0; i<$session.userNumber.length; i++){
-                            for (var y = 0; y<$session.userNumber.length; y++){
-                                if($session.userNumber[i] == tempArray[y]){
-                                    $session.cowsArray.push($session.userNumber[i])
-                                }
-                            }
-                        }
             
             #капелька лингвистики
             $session.firstBlock = "";
@@ -109,14 +83,13 @@ theme: /
             
             #TEMP
             $reactions.answer("$session.botNumber {{$session.botNumber}}");
-            $reactions.answer("$session.result {{$session.result}}");
-            
+            $reactions.answer("$session.userNumber {{$session.userNumber}}");
             #TEMP
             
             
             $reactions.answer("Результат: {{$session.firstBlock}} «{{$session.cowsArray}}» — угаданы на неверных позициях) и {{$session.secondBlock}} «{{$session.bullsArray}}» угаданы вплоть до позиции).");
             
-                    }
+                    
                 
             
             

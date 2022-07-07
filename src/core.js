@@ -63,32 +63,31 @@ function checkRepeat(number){
     if(unique == true){return true} else {return false}
 }
 
-//основная проверка числа пользователя
-function checkNumber(userNumber, botNumber){
-    if(checkFull(userNumber, botNumber)){return "win"} 
-    else {
-    var bulls = checkBulls(userNumber, botNumber)
-    var cows = checkCows(userNumber, botNumber)
-    var result = [cows, bulls]
-    }
-}
-
-//проверка на полное совпадение
-function checkFull(userNumber, botNumber){
-    if(userNumber[0] == botNumber[0]&&userNumber[1] == botNumber[1]&&userNumber[2] == botNumber[2]&&userNumber[3] == botNumber[3]){
-        return true
-    } else return false
-}
-
 //проверка на быков
 function checkBulls(userNumber, botNumber){
-    return
+    var bullsArray = [];
+    for (var i = 0; i<userNumber.length; i++){
+        if(userNumber[i] == botNumber[i]){
+        bullsArray.push(userNumber[i])
+        }
+    }
+    return bullsArray
 }
 
 //проверка на коров
 function checkCows(userNumber, botNumber){
-    return
+    var cowsArray = [];
+    for (var i = 0; i<userNumber.length; i++){
+        for (var y = 0; y<userNumber.length; y++){
+            if(userNumber[i] == botNumber[y]){
+                cowsArray.push(userNumber[i])
+            }
+        }
+    }
+    return cowsArray
 }
+
+
 
 
 
