@@ -48,14 +48,14 @@ theme: /
             #проверка числа пользователя на размер
             if(!checkSize($session.userNumber)){
                 $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами. Количество цифр не совпадает");    
+            } 
+            #проверка числа пользователя на повторения
+            else if (!checkRepeat($session.userNumber){
+                $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами. Найдены повторяющиеся цифры");
             }
             
             
-            #проверка числа пользователя на размер
-            if($session.userNumber.length!=4){
-                $reactions.answer("Пожалуйста введите 4-значное число с неповторяющимися цифрами. Количество цифр не совпадает");
-            } 
-            else {
+            
             #проверка числа пользователя на повторения
                 var sameNumberFlag = false;
                 for (var i = 0; i<$session.userNumber.length; i++){
@@ -122,7 +122,7 @@ theme: /
             
                     }
                 }
-            }
+            
             
 
     state: NoMatch || noContext = true

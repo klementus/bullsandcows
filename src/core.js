@@ -43,6 +43,24 @@ function checkSize(number){
     }
 }
 
+//проверка числа пользователя на повторения
+function checkRepeat(number){
+    var unique = true;
+    for (var i = 0; i<number.length; i++){
+        for (var y = 0; y<number.length; y++){
+            if(number[i]==number[y]&&i!=y){
+                unique = false;
+            }
+        }
+    }
+    if(unique == true){return true} else {return false}
+}
+
+
+
+
+
+
 
 
 
