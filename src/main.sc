@@ -52,7 +52,7 @@ theme: /
             switch (isCorrect($session.userNumber)) {
                 case 'size': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр"); break;
                 case 'repeat': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Повторяющиеся цифры"); break;
-                case 'correct': $reactions.answer("ОК"); break;
+                case 'correct': $session.result = checkNumber($session.userNumber); break;
             }
             
             
@@ -77,7 +77,7 @@ theme: /
                                 }
                             }
                         }
-        
+            
             #капелька лингвистики
             $session.firstBlock = "";
             $session.secondBlock = "";
@@ -99,8 +99,8 @@ theme: /
             }
             
             #TEMP
-            $reactions.answer("$session.botNumber {{$session.botNumber}}")
-            
+            $reactions.answer("$session.botNumber {{$session.botNumber}}");
+            $reactions.answer("$session.result {{$session.result}}");
             
             #TEMP
             
