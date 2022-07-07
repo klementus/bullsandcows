@@ -33,6 +33,11 @@ function intToArray(number){
     return arrayNumber
 }
 
+//проверка числа пользователя на корректность
+function isCorrect(number){
+    if(checkSize(number)&&checkRepeat(number)){return true} else {return false}
+}
+
 //проверка числа пользователя на размер
 function checkSize(number){
     if(number.length==4){
