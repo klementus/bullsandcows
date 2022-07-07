@@ -38,7 +38,7 @@ theme: /
                 sameNumberFlag = false;
             }
             $session.botNumber = $session.array;
-            
+            $reactions.answer(toPrettyString($session.botNumber))
             #переход в стейт /Проверка
             $reactions.transition("/Проверка");
 
