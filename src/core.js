@@ -87,7 +87,11 @@ function checkCows(userNumber, botNumber){
     return cowsArray
 }
 
-
+function formTheAnswer(bullsArray, cowsArray){
+    
+    
+    
+}
 
 
 
