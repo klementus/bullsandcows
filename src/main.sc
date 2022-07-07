@@ -28,22 +28,10 @@ theme: /
     state: Игра
         script:
             #генерация случайного массива из 4 разных цифр (загаданное число)
-            $session.array = [];
-            var sameNumberFlag = false;
-            for (var i = 0; $session.array.length < 4; i++) {
-                $session.randomNumber = $jsapi.random(9) + 1;
-                for(var y = 0; y<$session.array.length; y++){
-                    if($session.array[y]==$session.randomNumber){
-                        sameNumberFlag = true;    
-                    } 
-                }
-                if(sameNumberFlag==false){$session.array.push($session.randomNumber);}
-                sameNumberFlag = false;
-            }
-            $session.botNumber = $session.array;
-            $reactions.answer(toPrettyString($session.botNumber))
+            $session.botNumber = botThinkNumber();
             #переход в стейт /Проверка
             $reactions.transition("/Проверка");
+            
 
     state: Проверка
         intent: /Число
@@ -121,6 +109,13 @@ theme: /
                 case '3': $session.secondBlock = "три «быка» (три цифры:"; break;
                 case '4': $session.secondBlock = "четыре «быка» (четыре цифры:"; break;
             }
+            
+            #TEMP
+            $reactions.answer("$session.botNumber {{$session.botNumber}}")
+            
+            
+            #TEMP
+            
             
             $reactions.answer("Результат: {{$session.firstBlock}} «{{$session.cowsArray}}» — угаданы на неверных позициях) и {{$session.secondBlock}} «{{$session.bullsArray}}» угаданы вплоть до позиции).");
             
