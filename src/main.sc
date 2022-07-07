@@ -3,6 +3,9 @@ require: slotfilling/slotFilling.sc
 
 require: common.js
     module = sys.zb-common
+    
+require: core.js
+
 
 theme: /
 
