@@ -61,36 +61,15 @@ theme: /
             }
             
             
-            #капелька лингвистики
-            $session.firstBlock = "";
-            $session.secondBlock = "";
-            var strSessionCowsArrayLength = String($session.cowsArray.length);
-            var strSessionBullsArrayLength = String($session.bullsArray.length);
-            switch (strSessionCowsArrayLength) {
-                case '0': $session.firstBlock = "ноль «коров» (ноль цифр"; break;
-                case '1': $session.firstBlock = "одна «корова» (одна цифра:"; break;
-                case '2': $session.firstBlock = "две «коровы» (две цифры:"; break;
-                case '3': $session.firstBlock = "три «коровы» (три цифры:"; break;
-                case '4': $session.firstBlock = "четыре «коровы» (четыре цифры:"; break;
-            }
-            switch (strSessionBullsArrayLength) {
-                case '0': $session.secondBlock = "ноль «быков» (ноль цифр:"; break;
-                case '1': $session.secondBlock = "один «бык» (одна цифра:"; break;
-                case '2': $session.secondBlock = "два «быка» (две цифры:"; break;
-                case '3': $session.secondBlock = "три «быка» (три цифры:"; break;
-                case '4': $session.secondBlock = "четыре «быка» (четыре цифры:"; break;
-            }
+         
             
             #TEMP
             $reactions.answer("$session.botNumber {{$session.botNumber}}");
             $reactions.answer("$session.userNumber {{$session.userNumber}}");
+            $reactions.answer("$session.userNumber {{$session.userNumber}}");
+            $reactions.answer("$session.userNumber {{$session.userNumber}}");
             #TEMP
             
-            
-            $reactions.answer("Результат: {{$session.firstBlock}} «{{$session.cowsArray}}» — угаданы на неверных позициях) и {{$session.secondBlock}} «{{$session.bullsArray}}» угаданы вплоть до позиции).");
-            
-                    
-                
             
             
 

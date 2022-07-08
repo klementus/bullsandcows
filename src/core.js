@@ -87,14 +87,41 @@ function checkCows(userNumber, botNumber){
     return cowsArray
 }
 
+//формирования ответа на число пользователя
 function formTheAnswer(bullsArray, cowsArray){
+    var answerCows = formCows(cowsArray);
+    var answerBulls = formBulls(bullsArray);
+    var result = answerCows+answerBulls
     
-    
-    
+    return result
 }
 
+//формирование ответа на число коров
+function formCows(cowsArray){
+    var answerCows = "";
+    
+    switch(cowsArray.length){
+        case "0": answerCows = "ноль «коров»";break;
+        case "1": answerCows = "одна «корова» (одна цифра: «"+cowsArray[0]+"» — угадана на неверной позиции) и ";break;
+        case "2": answerCows = "две «коровы» ";break;
+        case "3": answerCows = "три «коровы» ";break;
+        case "4": answerCows = "четыре «коровы» ";break;
+    }
+    return answerCows
+}
 
-
+//формирование ответа на число быков
+function formBulls(bullsArray){
+    var answerBulls = "";
+    
+    switch(bullsArray.length){
+        case "0": answerBulls = "ноль «быков» ";break;
+        case "1": answerBulls = "один «бык» ";break;
+        case "2": answerBulls = "два «быка» ";break;
+        case "3": answerBulls = "три «быка» ";break;
+    }
+    return answerBulls
+}
 
 
 
