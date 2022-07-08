@@ -116,9 +116,9 @@ function formBulls(bullsArray){
     
     switch(String(bullsArray.length)){
         case "0": answerBulls = "ноль «быков»";break;
-        case "1": answerBulls = "один «бык»  (одна цифра «"+bullsArray[0]+"» угадана вплоть до позиции).";break;
-        case "2": answerBulls = "два «быка» ";break;
-        case "3": answerBulls = "три «быка» ";break;
+        case "1": answerBulls = "один «бык» (одна цифра «"+bullsArray[0]+"» угадана вплоть до позиции).";break;
+        case "2": answerBulls = "два «быка» (две цифры «"+bullsArray[0]+"» и «"+bullsArray[1]+"» угаданы вплоть до позиции).";break;
+        case "3": answerBulls = "три «быка» (три цифры «"+bullsArray[0]+"», «"+bullsArray[1]+"» и «"+bullsArray[2]+"» угаданы вплоть до позиции).";break; //хм, а разве может быть три быка? оставлю на всякий случай
     }
     return answerBulls
 }
