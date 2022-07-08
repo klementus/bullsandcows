@@ -17,9 +17,8 @@ theme: /
 
         state: Согласен?
             script:
-            #обнуление чисел
+            #обнуление тайного числа
                 $session.botNumber = 0;
-            
             
             state: Да
                 intent: /Согласие
@@ -44,34 +43,31 @@ theme: /
         script:
             if ($session.botNumber!=0){
             #инициализация ввода пользователя
-            $session.userNumber = userInput($parseTree);
+                $session.userNumber = userInput($parseTree);
             #проверка числа пользователя на корректность
-            switch (isCorrect($session.userNumber)) {
-                case 'size': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр"); break;
-                case 'repeat': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Повторяющиеся цифры"); break;
-                case 'correct': 
-                    $session.bullsArray = checkBulls($session.userNumber, $session.botNumber);
-                    $session.cowsArray = checkCows($session.userNumber, $session.botNumber);
-                    $session.attempt -= 1
-                    break;
-            }
+                switch (isCorrect($session.userNumber)) {
+                    case 'size': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр"); break;
+                    case 'repeat': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Повторяющиеся цифры"); break;
+                    case 'correct': 
+                        $session.bullsArray = checkBulls($session.userNumber, $session.botNumber);
+                        $session.cowsArray = checkCows($session.userNumber, $session.botNumber);
+                        $session.attempt -= 1
+                        break;
+                }
             #подсчет коров, быков и вывод результата
-            if(isCorrect($session.userNumber)=="correct"){
-                if($session.bullsArray.length==4){
-                    $reactions.answer("Ты выиграл! Хочешь еще раз?");
-                    $reactions.transition("/Правила/Согласен?");
-                } 
-                else {
-                    $session.result = formTheAnswer($session.bullsArray, $session.cowsArray, $session.attempt)
-                    $reactions.answer("Результат: {{$session.result}}");
-                    if($session.attempt<=0){
-                        $reactions.transition("/Правила/Согласен?"); 
+                if(isCorrect($session.userNumber)=="correct"){
+                    if($session.bullsArray.length==4){
+                        $reactions.answer("Ты выиграл! Хочешь еще раз?");
+                        $reactions.transition("/Правила/Согласен?");
+                    } 
+                    else {
+                        $session.result = formTheAnswer($session.bullsArray, $session.cowsArray, $session.attempt)
+                        $reactions.answer("Результат: {{$session.result}}");
+                        if($session.attempt<=0){
+                            $reactions.transition("/Правила/Согласен?"); 
+                        }
                     }
                 }
-            }
-            #TEMP
-            $reactions.answer("$session.attempt {{$session.attempt}}");
-            $reactions.answer("$session.botNumber {{$session.botNumber}}");
             }
             else {
                 $reactions.answer("Хочешь сыграть?");
