@@ -88,10 +88,11 @@ function checkCows(userNumber, botNumber){
 }
 
 //формирования ответа на число пользователя
-function formTheAnswer(bullsArray, cowsArray){
+function formTheAnswer(bullsArray, cowsArray, attempt){
     var answerCows = formCows(cowsArray);
     var answerBulls = formBulls(bullsArray);
-    var result = answerCows+answerBulls
+    var answerAttempt = formAttempt(attempt)
+    var result = answerCows+answerBulls+answerAttempt
     
     return result
 }
@@ -124,8 +125,33 @@ function formBulls(bullsArray){
     return answerBulls
 }
 
-
-
+//формирование части ответа на количество попыток
+function formAttempt(attempt){
+    var answerAttempt = "";
+    
+    switch(String(attempt)){
+        case "1": answerAttempt = " Осталась последняя попытка!";break;
+        case "2": answerAttempt = " Осталось две попытки. Хорошо подумай";break;
+        case "3": answerAttempt = " Осталось три попытки. Думай";break; 
+        case "4": answerAttempt = " Осталось четыре попытки. Не торопись";break; 
+        case "5": answerAttempt = " Осталось пять попыток.";break; 
+        case "6": answerAttempt = " Осталось шесть попыток.";break;
+        case "7": answerAttempt = " Осталось семь попыток.";break;
+        case "8": answerAttempt = " Осталось восемь попыток.";break;
+        case "9": answerAttempt = " Осталось девять попыток.";break;
+        case "10": answerAttempt = " Осталось десять попыток.";break;
+        case "11": answerAttempt = " Осталось одиннадцать попыток.";break;
+        case "12": answerAttempt = " Осталось двенадцать попыток.";break;
+        case "13": answerAttempt = " Осталось тринадцать попыток.";break;
+        case "14": answerAttempt = " Осталось четырнадцать попыток.";break;
+        case "15": answerAttempt = " Осталось пятнадцать попыток.";break;
+        case "16": answerAttempt = " Осталось шестнадцать попыток.";break;
+        case "17": answerAttempt = " Осталось семнадцать попыток.";break;
+        case "18": answerAttempt = " Осталось восемнадцать попыток.";break;
+        case "19": answerAttempt = " Осталось девятнадцать попыток.";break;
+    }
+    return answerAttempt
+}
 
 
 

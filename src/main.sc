@@ -30,7 +30,7 @@ theme: /
             #генерация случайного массива из 4 разных цифр (загаданное число)
             $session.botNumber = botThinkNumber();
             #инициализация количества попыток
-            $session.try = 20
+            $session.attempt = 20
             #переход в стейт /Проверка
             $reactions.transition("/Проверка");
             
@@ -57,10 +57,12 @@ theme: /
                     $reactions.transition("/Правила/Согласен?");
                 } 
                 else {
-                    $session.result = formTheAnswer($session.bullsArray, $session.cowsArray)
+                    $session.result = formTheAnswer($session.bullsArray, $session.cowsArray, $session.attempt)
                     $reactions.answer("Результат: {{$session.result}}");
                 }
             }
+            $session.attempt -= 1
+            $reactions.answer("$session.attempt {{$session.attempt}}");
             
 
     state: NoMatch || noContext = true
