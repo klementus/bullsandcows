@@ -17,7 +17,7 @@ theme: /
 
         state: Согласен?
             script:
-            #обнуление тайного числа
+            #обнуление тайного числа, чтобы остановить игру
                 $session.botNumber = 0;
             
             state: Да
@@ -41,6 +41,7 @@ theme: /
     state: Проверка
         intent: /Число
         script:
+            #проверка тайного числа
             if ($session.botNumber!=0){
             #инициализация ввода пользователя
                 $session.userNumber = userInput($parseTree);
