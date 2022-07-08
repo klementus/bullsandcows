@@ -106,6 +106,42 @@
       "array" : true
     } ],
     "priority" : 0
+  }, {
+    "id" : 11113643,
+    "path" : "/endThisGame",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "стоп"
+    }, {
+      "text" : "надоело"
+    }, {
+      "text" : "хватит"
+    }, {
+      "text" : "выход"
+    }, {
+      "text" : "я устал"
+    }, {
+      "text" : "устал"
+    }, {
+      "text" : "не хочу"
+    }, {
+      "text" : "сдаюсь"
+    }, {
+      "text" : "не буду"
+    }, {
+      "text" : "мне надоело"
+    }, {
+      "text" : "отвали"
+    }, {
+      "text" : "отстань"
+    }, {
+      "text" : "сгинь"
+    }, {
+      "text" : "все"
+    } ],
+    "patterns" : [ ],
+    "priority" : 0
   } ],
   "entities" : [ ],
   "enabledSystemEntities" : [ "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],

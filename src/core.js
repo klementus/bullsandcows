@@ -79,7 +79,7 @@ function checkCows(userNumber, botNumber){
     var cowsArray = [];
     for (var i = 0; i<userNumber.length; i++){
         for (var y = 0; y<userNumber.length; y++){
-            if(userNumber[i] == botNumber[y]){
+            if(userNumber[i] == botNumber[y]&&i!=y){
                 cowsArray.push(userNumber[i])
             }
         }
@@ -96,7 +96,7 @@ function formTheAnswer(bullsArray, cowsArray){
     return result
 }
 
-//формирование ответа на число коров
+//формирование части ответа на число коров
 function formCows(cowsArray){
     var answerCows = "";
     
@@ -110,7 +110,7 @@ function formCows(cowsArray){
     return answerCows
 }
 
-//формирование ответа на число быков
+//формирование части ответа на число быков
 function formBulls(bullsArray){
     var answerBulls = "";
     
@@ -118,7 +118,8 @@ function formBulls(bullsArray){
         case "0": answerBulls = "ноль «быков»";break;
         case "1": answerBulls = "один «бык» (одна цифра «"+bullsArray[0]+"» угадана вплоть до позиции).";break;
         case "2": answerBulls = "два «быка» (две цифры «"+bullsArray[0]+"» и «"+bullsArray[1]+"» угаданы вплоть до позиции).";break;
-        case "3": answerBulls = "три «быка» (три цифры «"+bullsArray[0]+"», «"+bullsArray[1]+"» и «"+bullsArray[2]+"» угаданы вплоть до позиции).";break; //хм, а разве может быть три быка? оставлю на всякий случай
+        case "3": answerBulls = "три «быка» (три цифры «"+bullsArray[0]+"», «"+bullsArray[1]+"» и «"+bullsArray[2]+"» угаданы вплоть до позиции).";break; 
+        case "4": answerBulls = "что-то пошло не по плану";break; 
     }
     return answerBulls
 }

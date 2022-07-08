@@ -50,7 +50,7 @@ theme: /
             }
             
             if(isCorrect($session.userNumber)=="correct"){
-                if($session.bullsArray.length==3){
+                if($session.bullsArray.length==4){
                     $reactions.answer("Ты выиграл! Хочешь еще раз?");
                     $reactions.transition("/Правила/Согласен?");
                 } 
@@ -76,10 +76,13 @@ theme: /
     state: NoMatch || noContext = true
         event!: noMatch
         random:
-            a: Я не понял. Пожалуйста введите 4-значное число с неповторяющимися цифрами
-            a: Что вы имеете в виду? Пожалуйста введите 4-значное число с неповторяющимися цифрами
-            a: Ничего не пойму. Пожалуйста введите 4-значное число с неповторяющимися цифрами
+            a: Я не понял.
+            a: Что вы имеете в виду? 
+            a: Ничего не пойму.
 
+    state: EndGame
+        intent!: /endThisGame
+        a: Очень жаль! Если передумаешь — скажи "давай поиграем"
 
 
 
