@@ -108,7 +108,7 @@
     "priority" : 0
   }, {
     "id" : 11113643,
-    "path" : "/endThisGame",
+    "path" : "/Выход",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
