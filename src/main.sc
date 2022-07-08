@@ -86,6 +86,9 @@ theme: /
     state: EndGame
         intent!: /endThisGame
         a: Очень жаль! Если передумаешь — скажи "давай поиграем"
+        script:
+            #обнуление тайного числа, чтобы остановить игру
+                $session.botNumber = 0;
 
 
 

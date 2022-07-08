@@ -88,10 +88,33 @@
     <a>Хочешь сыграть?</a>
     </test-case>
     
+    <test-case id="9">
+        <context var="session">
+        {
+            "botNumber": "4875",
+            "attempt" : "0"
+        }
+    </context>
+    <state>/Проверка</state>
+    <q>4875</q>
+    <a>Ты выиграл! Хочешь еще раз?</a>  
+    <q>4875</q>
+    <a>Хочешь сыграть?</a> 
+    </test-case>
     
-    
-    
-    
+    <test-case id="10">
+        <context var="session">
+        {
+            "botNumber": "4875",
+            "attempt" : "0"
+        }
+    </context>
+    <state>/Проверка</state>
+    <q>выход</q>
+    <a>Очень жаль! Если передумаешь — скажи "давай поиграем"</a>  
+    <q>4875</q>
+    <a>Хочешь сыграть?</a> 
+    </test-case>
     
     
     <test-case id="43">
