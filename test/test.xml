@@ -1,9 +1,10 @@
 <test>
     <test-case id="1">
         <q>/start</q>
-        <a state = "/Правила"/>
-        <q>нет</q>
-        <a state = "/Правила/Согласен?/Нет"/>
+        <a state = "/Правила/Согласен?"/>
+        <q>да</q>
+        <a state = "/Правила/Согласен?/Да"/>
+        <a state = "/Игра"/>
     </test-case>
     <test-case id="2">
         <q>/start</q>
@@ -20,4 +21,8 @@
         <q>/NoMatch</q>
         <a>Я не понял.</a>
     </test-case>
+    
+    
+    
+    
 </test>
