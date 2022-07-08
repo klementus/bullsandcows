@@ -100,12 +100,12 @@ function formTheAnswer(bullsArray, cowsArray){
 function formCows(cowsArray){
     var answerCows = "";
     
-    switch(cowsArray.length){
-        case "0": answerCows = "ноль «коров»";break;
+    switch(String(cowsArray.length)){
+        case "0": answerCows = "ноль «коров» и ";break;
         case "1": answerCows = "одна «корова» (одна цифра: «"+cowsArray[0]+"» — угадана на неверной позиции) и ";break;
-        case "2": answerCows = "две «коровы» ";break;
-        case "3": answerCows = "три «коровы» ";break;
-        case "4": answerCows = "четыре «коровы» ";break;
+        case "2": answerCows = "две «коровы» (две цифры: «"+cowsArray[0]+"» и «"+cowsArray[1]+"» — угаданы на неверной позиции) и ";break;
+        case "3": answerCows = "три «коровы» (три цифры: «"+cowsArray[0]+"», «"+cowsArray[1]+"» и «"+cowsArray[2]+"» — угаданы на неверной позиции) и ";break;
+        case "4": answerCows = "четыре «коровы» (четыре цифры: «"+cowsArray[0]+"», «"+cowsArray[1]+"», «"+cowsArray[2]+"» и «"+cowsArray[3]+"» — угаданы на неверной позиции) и ";break;
     }
     return answerCows
 }
@@ -114,9 +114,9 @@ function formCows(cowsArray){
 function formBulls(bullsArray){
     var answerBulls = "";
     
-    switch(bullsArray.length){
-        case "0": answerBulls = "ноль «быков» ";break;
-        case "1": answerBulls = "один «бык» ";break;
+    switch(String(bullsArray.length)){
+        case "0": answerBulls = "ноль «быков»";break;
+        case "1": answerBulls = "один «бык»  (одна цифра «"+bullsArray[0]+"» угадана вплоть до позиции).";break;
         case "2": answerBulls = "два «быка» ";break;
         case "3": answerBulls = "три «быка» ";break;
     }

@@ -66,8 +66,8 @@ theme: /
             #TEMP
             $reactions.answer("$session.botNumber {{$session.botNumber}}");
             $reactions.answer("$session.userNumber {{$session.userNumber}}");
-            $reactions.answer("$session.userNumber {{$session.userNumber}}");
-            $reactions.answer("$session.userNumber {{$session.userNumber}}");
+            $reactions.answer("$session.bullsArray {{$session.bullsArray}}");
+            $reactions.answer("$session.cowsArray {{$session.cowsArray}}");
             #TEMP
             
             
