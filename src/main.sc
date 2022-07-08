@@ -60,7 +60,7 @@ theme: /
             #подсчет коров, быков и вывод результата
                 if(isCorrect($session.userNumber)=="correct"){
                     if($session.bullsArray.length==4){
-                        $reactions.answer("Ты выиграл! Хочешь еще раз?");
+                        $reactions.answer("Победа! Хочешь еще раз?");
                         $reactions.transition("/Правила/Согласен?");
                     } 
                     else {

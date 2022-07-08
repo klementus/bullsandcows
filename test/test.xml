@@ -63,18 +63,7 @@
     <a>Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр</a>    
     </test-case>
     
-    <test-case id="6">
-        <context var="session">
-        {
-            "botNumber": "4875"
-        }
-    </context>
-    <state>/Проверка</state>
-    <q>4574</q>
-    <a>Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Повторяющиеся цифры</a>    
-    </test-case>
-    
-    <test-case id="7">
+    <test-case id="7 - буквы">
         <context var="session">
         {
             "botNumber": "4875"
@@ -85,7 +74,7 @@
     <a state = "/NoMatch"/>   
     </test-case>
     
-    <test-case id="8">
+    <test-case id="8 - проигрыш">
         <context var="session">
         {
             "botNumber": "4875",
@@ -99,7 +88,7 @@
     <a>Хочешь сыграть?</a>
     </test-case>
     
-    <test-case id="9">
+    <test-case id="9 - победа">
         <context var="session">
         {
             "botNumber": "4875",
@@ -108,7 +97,7 @@
     </context>
     <state>/Проверка</state>
     <q>4875</q>
-    <a>Ты выиграл! Хочешь еще раз?</a>  
+    <a>Победа! Хочешь еще раз?</a>  
     <q>4875</q>
     <a>Хочешь сыграть?</a> 
     </test-case>
