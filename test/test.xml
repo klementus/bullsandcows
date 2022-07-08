@@ -18,7 +18,7 @@
         <a>Я загадал число. Твоя догадка?</a>
     </test-case>
     
-    <test-case id="3 - выиграл">
+    <test-case id="3 - победа">
         <context var="session">
         {
             "botNumber": "4875"
@@ -26,7 +26,7 @@
     </context>
     <state>/Проверка</state>
     <q>4875</q>
-    <a>Ты выиграл! Хочешь еще раз?</a>    
+    <a>Победа! Хочешь еще раз?</a>    
     </test-case>
     
     <test-case id="4 - обычная попытка">
@@ -74,7 +74,7 @@
     <a state = "/NoMatch"/>   
     </test-case>
     
-    <test-case id="8 - проигрыш">
+    <test-case id="8 - цифры после проигрыша">
         <context var="session">
         {
             "botNumber": "4875",
@@ -88,7 +88,7 @@
     <a>Хочешь сыграть?</a>
     </test-case>
     
-    <test-case id="9 - победа">
+    <test-case id="9 - цифры после победы">
         <context var="session">
         {
             "botNumber": "4875",
@@ -102,7 +102,7 @@
     <a>Хочешь сыграть?</a> 
     </test-case>
     
-    <test-case id="10">
+    <test-case id="10 - выход">
         <context var="session">
         {
             "botNumber": "4875",
@@ -116,7 +116,7 @@
     <a>Хочешь сыграть?</a> 
     </test-case>
     
-    <test-case id="11">
+    <test-case id="11 - цифры вместо да">
         <context var="session">
         {
             "botNumber": "4875",
@@ -132,7 +132,7 @@
     <a>Хочешь сыграть?</a>
     </test-case>
     
-    <test-case id="12">
+    <test-case id="12 - множественные некорректные вводы">
         <context var="session">
         {
             "botNumber": "4875",
@@ -150,14 +150,14 @@
     <a>Хочешь сыграть?</a>
     </test-case>
     
-    <test-case id="13">
+    <test-case id="13 - стартовый некорректный ввод">
         <q>/start</q>
         <a state = "/Правила"/>
         <q>как дела?</q>
         <a state = "/NoMatch"/>
     </test-case>
     
-    <test-case id="14">
+    <test-case id="14 - no match">
         <random>1,2</random>
         <q>/NoMatch</q>
         <a>Что вы имеете в виду?</a>
@@ -167,7 +167,7 @@
         <a>Я не понял.</a>
     </test-case>
     
-    <test-case id="15">
+    <test-case id="15 - корректный ввод после некорректного">
         <context var="session">
         {
             "botNumber": "4875",
@@ -182,15 +182,5 @@
     <q>4576</q>
     <a>Результат: одна «корова» (одна цифра: «5» — угадана на неверной позиции) и два «быка» (две цифры «4» и «7» угаданы вплоть до позиции). Осталось шестнадцать попыток.</a>
     </test-case>
-    
-    <test-case id="16">
-        <q>/start</q>
-        <a state = "/Правила"/>
-        <q>4576</q>
-        <a>Хочешь сыграть?</a>
-    </test-case>
-    
-    
-    
     
 </test>
