@@ -16,7 +16,11 @@ theme: /
         go!: /Правила/Согласен?
 
         state: Согласен?
-
+            script:
+            #обнуление чисел
+                $session.botNumber = 0;
+            
+            
             state: Да
                 intent: /Согласие
                 go!: /Игра
@@ -38,10 +42,7 @@ theme: /
     state: Проверка
         intent: /Число
         script:
-            if($session.attempt<=0){
-                $reactions.answer("Попыток не осталось. Хочешь еще раз?");
-                $reactions.transition("/Правила/Согласен?"); 
-                }
+            if ($session.botNumber!=0){
             #инициализация ввода пользователя
             $session.userNumber = userInput($parseTree);
             #проверка числа пользователя на корректность
@@ -63,9 +64,19 @@ theme: /
                 else {
                     $session.result = formTheAnswer($session.bullsArray, $session.cowsArray, $session.attempt)
                     $reactions.answer("Результат: {{$session.result}}");
+                    if($session.attempt<=0){
+                        $reactions.transition("/Правила/Согласен?"); 
+                    }
                 }
             }
+            #TEMP
             $reactions.answer("$session.attempt {{$session.attempt}}");
+            $reactions.answer("$session.botNumber {{$session.botNumber}}");
+            }
+            else {
+                $reactions.answer("Хочешь сыграть?");
+                $reactions.transition("/Правила/Согласен?");
+            }
             
             
     state: NoMatch || noContext = true
