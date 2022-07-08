@@ -130,6 +130,7 @@ function formAttempt(attempt){
     var answerAttempt = "";
     
     switch(String(attempt)){
+        case "0": answerAttempt = " Попыток больше не осталось :(";break;
         case "1": answerAttempt = " Осталась последняя попытка!";break;
         case "2": answerAttempt = " Осталось две попытки. Хорошо подумай";break;
         case "3": answerAttempt = " Осталось три попытки. Думай";break; 

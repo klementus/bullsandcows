@@ -38,9 +38,12 @@ theme: /
     state: Проверка
         intent: /Число
         script:
+            if($session.attempt<=0){
+                $reactions.answer("Попыток не осталось. Хочешь еще раз?");
+                $reactions.transition("/Правила/Согласен?"); 
+                }
             #инициализация ввода пользователя
             $session.userNumber = userInput($parseTree);
-            
             #проверка числа пользователя на корректность
             switch (isCorrect($session.userNumber)) {
                 case 'size': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр"); break;
@@ -48,6 +51,7 @@ theme: /
                 case 'correct': 
                     $session.bullsArray = checkBulls($session.userNumber, $session.botNumber);
                     $session.cowsArray = checkCows($session.userNumber, $session.botNumber);
+                    $session.attempt -= 1
                     break;
             }
             #подсчет коров, быков и вывод результата
@@ -61,10 +65,9 @@ theme: /
                     $reactions.answer("Результат: {{$session.result}}");
                 }
             }
-            $session.attempt -= 1
             $reactions.answer("$session.attempt {{$session.attempt}}");
             
-
+            
     state: NoMatch || noContext = true
         event!: noMatch
         random:
