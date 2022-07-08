@@ -48,7 +48,7 @@ theme: /
                     $session.cowsArray = checkCows($session.userNumber, $session.botNumber);
                     break;
             }
-            
+            #подсчет коров, быков и вывод результата
             if(isCorrect($session.userNumber)=="correct"){
                 if($session.bullsArray.length==4){
                     $reactions.answer("Ты выиграл! Хочешь еще раз?");
