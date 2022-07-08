@@ -85,7 +85,7 @@
       "name" : "Number",
       "entity" : "duckling.number",
       "required" : true,
-      "prompts" : [ "Я загадал число. Твоя догадка? ", "Предположи число" ],
+      "prompts" : [ "Я загадал число. Твоя догадка? ", "Предположи число.", "У тебя 20 попыток" ],
       "array" : true
     } ],
     "priority" : 0

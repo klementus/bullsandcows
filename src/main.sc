@@ -29,6 +29,8 @@ theme: /
         script:
             #генерация случайного массива из 4 разных цифр (загаданное число)
             $session.botNumber = botThinkNumber();
+            #инициализация количества попыток
+            $session.try = 20
             #переход в стейт /Проверка
             $reactions.transition("/Проверка");
             
