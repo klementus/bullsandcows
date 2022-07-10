@@ -6,7 +6,6 @@ require: common.js
     
 require: core.js
 
-
 theme: /
 
     state: Правила
@@ -17,10 +16,11 @@ theme: /
         
         state: Согласен?
             script:
-            #обнуление тайного числа, чтобы остановить игру
+            #обнуление чисел
                 $session.botNumber = 0;
                 $session.userNumber = 0;
                 $session.result = 0;
+                $session.firstZeroNumber = 0;
             
             state: Да
                 intent: /Согласие
@@ -46,7 +46,12 @@ theme: /
             #проверка тайного числа
             if ($session.botNumber!=0){
             #инициализация ввода пользователя
-                $session.userNumber = userInput($parseTree);
+                if($session.firstZeroNumber==0){$session.userNumber = userInput($parseTree);}
+                else{
+                $session.userNumber = $session.firstZeroNumber;
+                }
+                
+        
             #проверка числа пользователя на корректность
                 switch (isCorrect($session.userNumber)) {
                     case 'size': $reactions.answer("Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр"); break;
@@ -66,6 +71,7 @@ theme: /
                     else {
                         $session.result = formTheAnswer($session.bullsArray, $session.cowsArray, $session.attempt)
                         $reactions.answer("Результат: {{$session.result}}");
+                        $session.firstZeroNumber = 0;
                         if($session.attempt<=0){
                             $reactions.transition("/Правила/Согласен?"); 
                         }
@@ -94,5 +100,15 @@ theme: /
                 $session.userNumber = 0;
                 $session.result = 0;
 
-
-
+    #защита от первого ноля
+    state: Ноль
+        q: 0* 
+        script:
+            #парсинг ввода пользователя
+            $session.firstZeroNumber = $parseTree.text    
+            #переход в стейт /Проверка
+            $reactions.transition("/Проверка");
+            
+            
+            
+            
