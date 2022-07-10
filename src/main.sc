@@ -28,6 +28,12 @@ theme: /
 
             state: Нет
                 intent: /Несогласие
+                    script: 
+                    #обнуление чисел
+                        $session.botNumber = 0;
+                        $session.userNumber = 0;
+                        $session.result = 0;
+                        $session.firstZeroNumber = 0;
                 a: Ну и ладно! Если передумаешь - скажи "давай поиграем"
 
     state: Игра
