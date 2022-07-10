@@ -21,7 +21,8 @@
     <test-case id="3 - победа">
         <context var="session">
         {
-            "botNumber": "4875"
+            "botNumber": "4875",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -33,7 +34,8 @@
         <context var="session">
         {
             "botNumber": "4875",
-            "attempt" : "18"
+            "attempt" : "18",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -44,7 +46,8 @@
     <test-case id="5 - три цифры">
         <context var="session">
         {
-            "botNumber": "4875"
+            "botNumber": "4875",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -55,7 +58,8 @@
     <test-case id="6 - пять цифр">
         <context var="session">
         {
-            "botNumber": "4875"
+            "botNumber": "4875",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -66,7 +70,8 @@
     <test-case id="7 - буквы">
         <context var="session">
         {
-            "botNumber": "4875"
+            "botNumber": "4875",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -78,7 +83,8 @@
         <context var="session">
         {
             "botNumber": "4875",
-            "attempt" : "1"
+            "attempt" : "1",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -92,7 +98,8 @@
         <context var="session">
         {
             "botNumber": "4875",
-            "attempt" : "0"
+            "attempt" : "0",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -106,7 +113,8 @@
         <context var="session">
         {
             "botNumber": "4875",
-            "attempt" : "0"
+            "attempt" : "0",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -120,7 +128,8 @@
         <context var="session">
         {
             "botNumber": "4875",
-            "attempt" : "0"
+            "attempt" : "0",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -136,7 +145,8 @@
         <context var="session">
         {
             "botNumber": "4875",
-            "attempt" : "0"
+            "attempt" : "0",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -171,7 +181,8 @@
         <context var="session">
         {
             "botNumber": "4875",
-            "attempt" : "18"
+            "attempt" : "18",
+            "firstZeroNumber" : "0"
         }
     </context>
     <state>/Проверка</state>
@@ -181,6 +192,23 @@
     <a>Ошибка. Пожалуйста введите 4-значное число с неповторяющимися цифрами. Неверное количество цифр</a>
     <q>4576</q>
     <a>Результат: одна «корова» (одна цифра: «5» — угадана на неверной позиции) и два «быка» (две цифры «4» и «7» угаданы вплоть до позиции). Осталось шестнадцать попыток.</a>
+    </test-case>
+    
+    <test-case id="16 - ввод числа начинающегося с 0">
+        <context var="session">
+        {
+            "botNumber": "4875",
+            "attempt" : "18",
+            "firstZeroNumber" : "0"
+        }
+    </context>
+    <state>/Проверка</state>
+    <q>4576</q>
+    <a>Результат: одна «корова» (одна цифра: «5» — угадана на неверной позиции) и два «быка» (две цифры «4» и «7» угаданы вплоть до позиции). Осталось семнадцать попыток.</a>    
+    <q>0457</q>
+    <a>Результат: три «коровы» (три цифры: «4», «5» и «7» — угаданы на неверной позиции) и ноль «быков». Осталось шестнадцать попыток.</a>
+    <q>4576</q>
+    <a>Результат: одна «корова» (одна цифра: «5» — угадана на неверной позиции) и два «быка» (две цифры «4» и «7» угаданы вплоть до позиции). Осталось пятнадцать попыток.</a>
     </test-case>
     
 </test>
